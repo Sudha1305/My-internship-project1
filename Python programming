@@ -1,0 +1,54 @@
+print("***WELCOME TO PYTHON QUIZ GAME***")
+print("You will be presented with 5 questions.")
+print("Enter the appropriate option to answer the question.")
+
+
+# Defining the question class
+class Question:
+    def __init__(self, text, answer, options):
+        self.text = text
+        self.answer = answer
+        self.options = options
+
+    def check_answer(self, user_choice):
+        # Checking if the user's choice is correct and returning a boolean value
+        return user_choice == self.answer
+
+# Creating a list of question objects
+questions = [
+    Question("Who developed the python language?", "b", ["a) Zim Den", "b) Guiodo Van Rossum", "c) Niene Stoen", "d) Wick Van Rossum"]),
+    Question("In which language is python written?", "c", ["a) English", "b) PHP", "c) C", "d) All the above"]),
+    Question("Which one of the following is correct extension of the python files?", "a", ["a) .py", "b) .python", "c) .p", "d) .ppf"]),
+    Question("Which ststement is used to stop a loop?", "c",["a) Stop", "b) Exit", "c)Break", "d) Return"]),
+    Question("Which method can be used to remove any whitespace from both the beginning and end of thee string?", "a", ["a) strip()", "b) ptrim()", "c) trim()", "d) len()"])
+]
+
+# Initializing the score and the question number
+score = 0
+question_no = 0
+
+# Looping over the questions and getting the user's input
+for question in questions:
+    # Incrementing the question number
+    question_no += 1
+    # Printing the question text and the options
+    print(f"Q{question_no}. {question.text}")
+    for option in question.options:
+        print(option)
+    # Getting the user's choice
+    user_choice = input("Enter your choice (a, b, c, or d): ")
+    # Checking the answer and printing the feedback, the score, and the correct answer
+    if question.check_answer(user_choice):
+        print("Well done👍! it is a correct answer!")
+        score += 1
+        print(f"Your score for this question is:{score}/{question_no}")
+    else:
+        print("Sorry,your answer is wrong!😔")
+        print(f"Your score for this question is:{score}/{question_no}")
+        print(f"The correct answer is:{question.answer}")
+    print()
+
+# Printing the total score
+print(f"Your total score is:{score}/{question_no}")
+if(score == 5):
+    print("Wow! Your are the champion for this quiz🥳") 
